@@ -19,6 +19,22 @@
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+body.light-theme {
+  --bg: #f3f8fc;
+  --surface: #ffffff;
+  --surface-hover: #eef5fb;
+  --border: #d2e2f0;
+  --text: #10243a;
+  --text-muted: #5c748b;
+  --primary: #228db8;
+  --primary-hover: #1c79a0;
+  --primary-glow: rgba(34, 141, 184, 0.2);
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --danger-bg: rgba(239, 68, 68, 0.12);
+  --shadow: 0 10px 28px rgba(16, 36, 58, 0.12);
+}
+
 /* ─── Reset ────────────────────────────────────────────────── */
 *,
 *::before,
@@ -39,6 +55,13 @@ body {
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(53, 166, 208, 0.06) 0%, transparent 70%),
     radial-gradient(ellipse 50% 40% at 80% 100%, rgba(53, 166, 208, 0.04) 0%, transparent 60%);
   background-attachment: fixed;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.light-theme {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34, 141, 184, 0.08) 0%, transparent 72%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(45, 212, 191, 0.06) 0%, transparent 60%);
 }
 
 /* ─── App Layout ──────────────────────────────────────────── */
@@ -117,6 +140,49 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.theme-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(1px);
 }
 
 .logo-group {
@@ -882,6 +948,29 @@ body {
   gap: 4px;
 }
 
+body.light-theme .app-header {
+  background: linear-gradient(135deg, #f8fcff 0%, #edf5fb 55%, #e7f1f9 100%);
+  box-shadow: 0 4px 22px rgba(16, 36, 58, 0.1);
+  border-bottom: 1px solid var(--border);
+}
+
+body.light-theme .header-text h1 {
+  background: linear-gradient(135deg, #123859, #2f6c93);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-theme .subtitle {
+  color: rgba(34, 141, 184, 0.75);
+}
+
+body.light-theme .stat-item,
+body.light-theme .search-panel,
+body.light-theme .result-card {
+  background: rgba(255, 255, 255, 0.84);
+}
+
 .developer-credit {
   font-size: 0.7rem;
   color: var(--text-muted);
@@ -921,6 +1010,16 @@ body {
   .header-live-badge {
     padding: 4px 10px;
     font-size: 0.65rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .theme-toggle-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 
   .blob-1 { width: 250px; height: 250px; }
